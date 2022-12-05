@@ -8,7 +8,7 @@ from django.db.utils import OperationalError
 from django.test import SimpleTestCase
 
 
-@patch('core.management.commands.wait_for_db.Commands.check')
+@patch('core.management.commands.wait_for_db.Command.check')
 class CommandTests(SimpleTestCase):
     """
     Test commands.
@@ -20,4 +20,4 @@ class CommandTests(SimpleTestCase):
         """
         patched_check.return_value = True
         call_command('wait_for_db')
-        patched_check.assert_called_once_with(database=['default'])
+        patched_check.assert_called_once_with(databases=['default'])
